@@ -1,0 +1,45 @@
+<div *ngIf="stockList.length > 0; else noRecords">
+  <table class="table table-sm table-striped table-hover stock-table">
+    <thead>
+      <tr>
+        <th scope="col" class="button-header">
+          <app-stock-table-row-button [action]="editAction"
+                                      [icon]="faFileAlt"
+                                      buttonClass="btn-sm btn-light btn-block"
+                                      (eventClick)="handleCreateClick()"
+                                      title="New item">
+          </app-stock-table-row-button>
+        </th>
+        <th class="align-middle" scope="col">Id</th>
+        <th class="align-middle" scope="col">Name</th>
+        <th class="align-middle" scope="col">Price [HUF]</th>
+        <th class="align-middle" scope="col" *ngIf="exchangeRate.isValid">Price [{{exchangeRate.currency}}]</th>
+        <th class="align-middle" scope="col">Mass [kg]</th>
+        <th class="align-middle" scope="col">Quantity</th>
+        <th scope="col" class="button-header">&nbsp;</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let stockItem of stockList"
+          app-stock-table-row
+          title="{{stockItem.description}}"
+          [stockItem]="stockItem"
+          [exchangeRate]="exchangeRate"
+          (eventClick)="handleClick($event)"></tr>
+    </tbody>
+  </table>
+</div>
+<ng-template #noRecords>
+  <div>
+    There is nothing on stock.
+  </div>
+  <div class="stock-create-button">
+    <app-stock-table-row-button [action]="editAction"
+                                [icon]="faFileAlt"
+                                buttonClass="btn-light"
+                                (eventClick)="handleCreateClick()"
+                                title="New item"
+                                buttonText="Create new item...">
+    </app-stock-table-row-button>
+  </div>
+</ng-template>

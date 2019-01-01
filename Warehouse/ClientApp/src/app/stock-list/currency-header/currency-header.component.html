@@ -1,0 +1,13 @@
+<div *ngIf="exchangeRate.isValid; else notValid" class="alert alert-info" role="alert">
+  <span><strong>1 {{exchangeRate.currency}}</strong></span>
+  <span> average price is </span>
+  <span><strong>{{exchangeRate.value}} HUF</strong></span>
+  <span> on </span>
+  <span><strong>{{exchangeRate.date | date:'longDate'}} </strong></span>
+  <span><small class="text-muted">(source: mnb.hu)</small></span>
+</div>
+<ng-template #notValid>
+  <div class="alert alert-warning" role="alert">
+    Exchange rate from <strong>mnb.hu</strong> is currently unavailable, cannot display price in foreign currency. We'll try again later.
+  </div>
+</ng-template>

@@ -1,0 +1,40 @@
+<div *ngIf="(statisticsResult$ | async) as statisticsResult; else loading">
+  <h1>Statistics</h1>
+  <div class="container statistics">
+    <div class="row">
+      <div class="col-lg-3">
+        Global Mass [kg]:
+      </div>
+      <div class="col">
+        <strong>{{statisticsResult.globalMass.toLocaleString() || '-'}}</strong>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3">
+        Global price value:
+      </div>
+      <div class="col">
+        <strong>{{statisticsResult.globalPrice | currency:'HUF' || '-'}}</strong>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3">
+        Having top quantity:
+      </div>
+      <div class="col">
+        <strong>{{statisticsResult.topQuantityItem?.name || '-'}}</strong>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-lg-3">
+        Having top mass:
+      </div>
+      <div class="col">
+        <strong>{{statisticsResult.topMassItem?.name || '-'}}</strong>
+      </div>
+    </div>
+  </div>
+</div>
+<ng-template #loading>
+  <app-loading show="true"></app-loading>
+</ng-template>

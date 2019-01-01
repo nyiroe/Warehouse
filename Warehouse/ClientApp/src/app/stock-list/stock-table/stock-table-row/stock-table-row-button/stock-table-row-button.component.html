@@ -1,0 +1,6 @@
+<button type="button" class="btn {{buttonClass}} stock-button" [disabled]="isDisabled" (click)="handleClick()" [title]="title">
+  <fa-icon [icon]="icon"></fa-icon>
+  <span *ngIf="buttonText" class="button-text">
+    {{buttonText}}
+  </span>
+</button>

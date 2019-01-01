@@ -1,0 +1,35 @@
+<td>
+  <app-stock-table-row-button [stockItem]="stockItem"
+                              [action]="editAction"
+                              [icon]="faEdit"
+                              buttonClass="btn-sm btn-primary"
+                              (eventClick)="handleClick($event)"
+                              title="Edit item"></app-stock-table-row-button>
+  <app-stock-table-row-button [stockItem]="stockItem"
+                              [action]="deleteAction"
+                              [icon]="faTrashAlt"
+                              buttonClass="btn-sm btn-danger"
+                              (eventClick)="handleClick($event)"
+                              title="Delete item"></app-stock-table-row-button>
+</td>
+<th class="align-middle" scope="row">{{stockItem.id}}</th>
+<td class="align-middle">{{stockItem.name}}</td>
+<td class="align-middle">{{stockItem.price}}</td>
+<td class="align-middle" *ngIf="exchangeRate.isValid">{{stockItem.foreignPrice?.price}}</td>
+<td class="align-middle">{{stockItem.mass}}</td>
+<td class="align-middle">{{stockItem.quantity}}</td>
+<td>
+  <app-stock-table-row-button [stockItem]="stockItem"
+                              [action]="addAction"
+                              [icon]="faPlusCircle"
+                              buttonClass="btn-sm btn-success"
+                              (eventClick)="handleClick($event)"
+                              title="Add to stock"></app-stock-table-row-button>
+  <app-stock-table-row-button [stockItem]="stockItem"
+                              [action]="removeAction"
+                              [icon]="faMinusCircle"
+                              buttonClass="btn-sm btn-info"
+                              [isDisabled]="stockItem.quantity === 0"
+                              (eventClick)="handleClick($event)"
+                              title="Remove from stock"></app-stock-table-row-button>
+</td>

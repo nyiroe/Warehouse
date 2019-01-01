@@ -1,0 +1,21 @@
+<app-loading [show]="loading"></app-loading>
+<div class="modal-dialog">
+  <div class="modal-content">
+    <div class="modal-header alert alert-danger">
+      <h4 class="modal-title">Confirm deletion</h4>
+      <button type="button" class="close" (click)="close()">&times;</button>
+    </div>
+    <div class="modal-body">
+      <p class="text-center">
+        <span>This will remove </span>
+        <span><strong>{{stockItem.name}}</strong></span>
+        <span> and all related records.</span>
+      </p>
+      <p class="text-center">Are you sure?</p>
+    </div>
+    <div class="modal-footer">
+      <button type="button" class="btn btn-danger" (click)="confirm()">Delete</button>
+      <button type="button" class="btn btn-light" (click)="close()">Cancel</button>
+    </div>
+  </div>
+</div>

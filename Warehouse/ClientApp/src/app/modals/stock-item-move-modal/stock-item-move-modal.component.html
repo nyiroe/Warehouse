@@ -1,0 +1,29 @@
+<app-loading [show]="loading"></app-loading>
+<form name="formGroup" [formGroup]="formGroup" (validSubmit)="onSubmit()">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header alert alert-{{colorStyle}}">
+        <h4 class="modal-title">{{modalTitle}}</h4>
+        <button type="button" class="close" (click)="close()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <p class="text-center">
+          <span>Please specify the quantity for </span>
+          <span><strong>{{stockItem.name}}</strong></span>
+          <span>:</span>
+        </p>
+        <div class="form-group row">
+          <label for="stock-quantity" class="col-3 col-form-label">Quantity</label>
+          <div class="col-9">
+            <input id="stock-quantity" #quantity class="form-control" type="number" formControlName="quantity" [min]="min" [max]="max">
+            <bfv-messages></bfv-messages>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-{{colorStyle}}" [disabled]="!formGroup.valid">{{okButtonText}}</button>
+        <button type="button" class="btn btn-light" (click)="close()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</form>

@@ -1,0 +1,13 @@
+<div *ngIf="(stockListResult$ | async) as stockListResult; else loading">
+  <div>
+    <app-currency-header [exchangeRate]="stockListResult.exchangeRate"></app-currency-header>
+  </div>
+  <div class="stock-table">
+    <app-stock-table [exchangeRate]="stockListResult.exchangeRate"
+                     [stockList]="stockListResult.stockList"
+                     (eventClick)="handleClick($event)"></app-stock-table>
+  </div>
+</div>
+<ng-template #loading>
+  <app-loading show="true"></app-loading>
+</ng-template>

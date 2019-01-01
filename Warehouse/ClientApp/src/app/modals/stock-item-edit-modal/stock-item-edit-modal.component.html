@@ -1,0 +1,53 @@
+<app-loading [show]="loading"></app-loading>
+<form name="formGroup" [formGroup]="formGroup" (validSubmit)="onSubmit()">
+  <div class="modal-dialog">
+    <div class="modal-content">
+      <div class="modal-header alert alert-primary">
+        <h4 class="modal-title">{{modalTitle}}</h4>
+        <button type="button" class="close" (click)="close()">&times;</button>
+      </div>
+      <div class="modal-body">
+        <div class="form-group row">
+          <label for="stock-name" class="col-3 col-form-label">Name</label>
+          <div class="col-9">
+            <input id="stock-name" #stockname class="form-control" type="text" formControlName="name" placeholder="Please enter a name...">
+            <bfv-messages></bfv-messages>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="stock-id" class="col-3 col-form-label">Id</label>
+          <div class="col-9">
+            <input id="stock-id" class="form-control" type="text" formControlName="id" placeholder="Please enter an id...">
+            <small class="form-text text-muted">This field is optional but must be unique if filled.</small>
+            <bfv-messages></bfv-messages>
+          </div>
+        </div>
+        <div class="form-group row">
+          <label for="stock-description" class="col-3 col-form-label">Description</label>
+          <div class="col-9">
+            <input id="stock-description" class="form-control" type="text" formControlName="description" placeholder="Please enter a description...">
+            <bfv-messages></bfv-messages>
+          </div>
+        </div>
+        <div class="form-group row" [customErrorMessages]="customErrorMessages">
+          <label for="stock-price" class="col-3 col-form-label">Price [HUF]</label>
+          <div class="col-9">
+            <input id="stock-price" class="form-control" type="number" formControlName="price" [min]="min" [max]="maxPrice" placeholder="Please enter a price...">
+            <bfv-messages></bfv-messages>
+          </div>
+        </div>
+        <div class="form-group row" [customErrorMessages]="customErrorMessages">
+          <label for="stock-mass" class="col-3 col-form-label">Mass [kg]</label>
+          <div class="col-9">
+            <input id="stock-mass" class="form-control" type="number" formControlName="mass" [min]="min" [max]="maxMass" placeholder="Please enter the mass of the item...">
+            <bfv-messages></bfv-messages>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button type="submit" class="btn btn-primary">{{okButtonText}}</button>
+        <button type="button" class="btn btn-light" (click)="close()">Cancel</button>
+      </div>
+    </div>
+  </div>
+</form>
