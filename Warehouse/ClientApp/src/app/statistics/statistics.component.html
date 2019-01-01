@@ -6,7 +6,7 @@
         Global Mass [kg]:
       </div>
       <div class="col">
-        <strong>{{statisticsResult.globalMass.toLocaleString() || '-'}}</strong>
+        <strong>{{statisticsResult.globalMass?.toLocaleString() || '-'}}</strong>
       </div>
     </div>
     <div class="row">
@@ -14,7 +14,7 @@
         Global price value:
       </div>
       <div class="col">
-        <strong>{{statisticsResult.globalPrice | currency:'HUF' || '-'}}</strong>
+        <strong>{{statisticsResult.globalPrice ? (statisticsResult.globalPrice | currency:'HUF') : '-'}}</strong>
       </div>
     </div>
     <div class="row">
