@@ -9,17 +9,22 @@ namespace Warehouse.Data
 {
     public class StockItemView
     {
+        private const string STRING_PATTERN = @"^[a-zA-Z0-9- ]+$";
+
         [Range(1, int.MaxValue)]
         public int? StockItemId { get; set; }
 
         [StringLength(50)]
+        [RegularExpression(STRING_PATTERN)]
         public string Id { get; set; }
 
         [Required]
         [StringLength(50)]
+        [RegularExpression(STRING_PATTERN)]
         public string Name { get; set; }
 
         [StringLength(250)]
+        [RegularExpression(STRING_PATTERN)]
         public string Description { get; set; }
 
         [Required]

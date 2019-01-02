@@ -35,6 +35,10 @@ export class StockItemEditModalComponent extends SimpleModalComponent<IStockItem
     {
       error: 'greaterThanZero',
       format: (label, error) => `${label} must be greater than 0`
+    },
+    {
+      error: 'pattern',
+      format: (label, error) => `Only latin letters, numbers, dash and space is allowed`
     }
   ];
 
@@ -51,13 +55,16 @@ export class StockItemEditModalComponent extends SimpleModalComponent<IStockItem
     this.formGroup = new FormGroup({
       name: new FormControl(this.stockItem.name, [
         Validators.required,
-        Validators.maxLength(ServerValidations.STOCK_ITEM_NAME_MAXLENGTH)
+        Validators.maxLength(ServerValidations.STOCK_ITEM_NAME_MAXLENGTH),
+        Validators.pattern(ServerValidations.STOCK_ITEM_STRING_PATTERN)
       ]),
       id: new FormControl(this.stockItem.id, [
-        Validators.maxLength(ServerValidations.STOCK_ITEM_ID_MAXLENGTH)
+        Validators.maxLength(ServerValidations.STOCK_ITEM_ID_MAXLENGTH),
+        Validators.pattern(ServerValidations.STOCK_ITEM_STRING_PATTERN)
       ]),
       description: new FormControl(this.stockItem.description, [
-        Validators.maxLength(ServerValidations.STOCK_ITEM_DESCRIPTION_MAXLENGTH)
+        Validators.maxLength(ServerValidations.STOCK_ITEM_DESCRIPTION_MAXLENGTH),
+        Validators.pattern(ServerValidations.STOCK_ITEM_STRING_PATTERN)
       ]),
       price: new FormControl(this.stockItem.price, [
         Validators.required,

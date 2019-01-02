@@ -7,14 +7,14 @@
         <button type="button" class="close" (click)="close()">&times;</button>
       </div>
       <div class="modal-body">
-        <div class="form-group row">
+        <div class="form-group row" [customErrorMessages]="customErrorMessages">
           <label for="stock-name" class="col-3 col-form-label">Name</label>
           <div class="col-9">
             <input id="stock-name" #stockname class="form-control" type="text" formControlName="name" placeholder="Please enter a name...">
             <bfv-messages></bfv-messages>
           </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row" [customErrorMessages]="customErrorMessages">
           <label for="stock-id" class="col-3 col-form-label">Id</label>
           <div class="col-9">
             <input id="stock-id" class="form-control" type="text" formControlName="id" placeholder="Please enter an id...">
@@ -22,7 +22,7 @@
             <bfv-messages></bfv-messages>
           </div>
         </div>
-        <div class="form-group row">
+        <div class="form-group row" [customErrorMessages]="customErrorMessages">
           <label for="stock-description" class="col-3 col-form-label">Description</label>
           <div class="col-9">
             <input id="stock-description" class="form-control" type="text" formControlName="description" placeholder="Please enter a description...">
