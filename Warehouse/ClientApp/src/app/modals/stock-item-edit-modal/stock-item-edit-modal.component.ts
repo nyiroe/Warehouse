@@ -17,7 +17,7 @@ import { GreaterThanZero } from 'src/app/validators/greaterThanZero.validator';
   styleUrls: ['./stock-item-edit-modal.component.css']
 })
 export class StockItemEditModalComponent extends SimpleModalComponent<IStockItemEditModal, IStockItemView> implements OnInit, IStockItemEditModal {
-  @ViewChild("stockname") nameField: ElementRef;
+  @ViewChild("stockname", { static: true }) nameField: ElementRef;
   stockItem: IStockItemView;
   isCreate: boolean;
 

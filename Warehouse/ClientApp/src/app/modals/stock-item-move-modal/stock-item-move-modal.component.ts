@@ -14,7 +14,7 @@ import { ServerValidations } from 'src/app/constants/app.constants';
   styleUrls: ['./stock-item-move-modal.component.css']
 })
 export class StockItemMoveModalComponent extends SimpleModalComponent<IStockItemMoveModal, boolean> implements OnInit, IStockItemMoveModal {
-  @ViewChild("quantity") quantityField: ElementRef;
+  @ViewChild("quantity", { static: true }) quantityField: ElementRef;
   stockItem: IStockItemView;
   isAdd: boolean;
 
