@@ -34,8 +34,6 @@ namespace Warehouse.Controllers
         [ProducesResponseType(400)]
         public async Task<StockItemView> CreateAsync([FromBody] StockItemView stockItem)
         {
-            ValidateModelState();
-
             return await stockItemsService.CreateStockItemAsync(stockItem);
         }
 
@@ -45,8 +43,6 @@ namespace Warehouse.Controllers
         [ProducesResponseType(400)]
         public async Task<StockItemView> UpdateAsync([FromBody] StockItemView stockItem)
         {
-            ValidateModelState();
-
             return await stockItemsService.UpdateStockItemAsync(stockItem);
         }
 
@@ -67,8 +63,6 @@ namespace Warehouse.Controllers
         [ProducesResponseType(400)]
         public async Task<ActionResult> MoveStockItemsAsync([FromBody] StockMovementView stockMovement)
         {
-            ValidateModelState();
-
             await stockItemsService.MoveStockItemsAsync(stockMovement);
 
             return Ok();

@@ -8,14 +8,8 @@ using Warehouse.Exceptions;
 namespace Warehouse.Controllers
 {
     [Route("api/v1/[controller]/[action]")]
+    [ValidateModel]
     public abstract class ApiControllerBase : Controller
     {
-        protected void ValidateModelState()
-        {
-            if (!ModelState.IsValid)
-            {
-                throw new BadRequestException();
-            }
-        }
     }
 }
